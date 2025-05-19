@@ -1,19 +1,25 @@
-package com.perfulandia.usuarioservice.model;
+package com.perfulandia.productservice.model;
 
-import jakarta.persistence.*;
+
+
+//DTO DATA TRANSFER OBJECT ; OBJETO DE TRANSFERENCIA DE DATOS.
+//PARA SIMULAR LA RESPUESTA DESDE EL OTRO MICROSERVICIO
 import lombok.*;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder // Generar constructores de una manera mas flexible
 public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String nombre;
     private String correo;
     private String rol; //ADMIN, GERENTE, UN USUARIO
+
+
+
+
+
+
 
 }
