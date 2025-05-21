@@ -9,5 +9,5 @@ public class LogisticaserviceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LogisticaserviceApplication.class, args);
 	}
-
+//
 }
