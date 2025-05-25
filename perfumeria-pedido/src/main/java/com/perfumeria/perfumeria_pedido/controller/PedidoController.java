@@ -1,8 +1,6 @@
 package com.perfumeria.perfumeria_pedido.controller;
 import com.perfumeria.perfumeria_pedido.model.pedido;
-import com.perfumeria.perfumeria_pedido.repository.PedidoRepository;
 import com.perfumeria.perfumeria_pedido.service.PedidoService;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController

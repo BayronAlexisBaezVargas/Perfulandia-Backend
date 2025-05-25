@@ -16,6 +16,7 @@ public class pedido {
     private Long idPedido;
     private Long idCliente;
     private LocalDateTime fechaPedido;
+    private String estadoPedido;
     private int totalPedido;
 
 }
