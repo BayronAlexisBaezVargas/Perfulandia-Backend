@@ -4,12 +4,13 @@ import com.Inventario.Microservicio_Inventario.model.ProductoStock;
 import com.Inventario.Microservicio_Inventario.service.InventarioService;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+
 @RestController
-@RequestMapping("/inventario")
+@RequestMapping("/api/inventario")
 
 public class InventarioController {
 
@@ -17,6 +18,11 @@ public class InventarioController {
 
     public InventarioController(InventarioService service) {
         this.service = service;
+    }
+
+    @GetMapping
+    public List<ProductoStock> listarInventario() {
+        return service.obtenerTodos();
     }
 
     @GetMapping("/stock/{id}")
@@ -52,9 +58,9 @@ public class InventarioController {
     public ResponseEntity<ProductoStock> aumentarStock(
             @PathVariable Long id,
             @RequestParam String nombre,
-            @RequestParam Integer cantidad) {
+            @RequestParam Integer stock) {
 
-        ProductoStock actualizado = service.aumentarStock(id, nombre, cantidad);
+        ProductoStock actualizado = service.aumentarStock(id, nombre, stock);
         return ResponseEntity.ok(actualizado);
     }
 
