@@ -4,6 +4,8 @@ import com.Inventario.Microservicio_Inventario.model.ProductoStock;
 import com.Inventario.Microservicio_Inventario.repository.ProductoStockRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import java.util.Optional;
 
 @Service
@@ -56,5 +58,9 @@ public class InventarioService {
         }
 
         return false;
+    }
+
+    public List<ProductoStock> obtenerTodos() {
+        return repository.findAll();
     }
 }
