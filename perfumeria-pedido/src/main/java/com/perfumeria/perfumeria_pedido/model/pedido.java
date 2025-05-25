@@ -21,7 +21,7 @@ public class pedido {
 
 
     @Enumerated(EnumType.STRING)
-    private EstadoPedido estado; // Estado del pedido
+    private EstadoPedido estado; // Estado del pedido.
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<ProductoPedido> productos; // Lista de productos incluidos
