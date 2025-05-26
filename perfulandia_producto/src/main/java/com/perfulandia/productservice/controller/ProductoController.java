@@ -1,5 +1,6 @@
 package com.perfulandia.productservice.controller;
 
+import com.perfulandia.productservice.model.Pedido;
 import com.perfulandia.productservice.model.Producto;
 import com.perfulandia.productservice.model.Usuario;
 import com.perfulandia.productservice.model.Carrito;
@@ -53,7 +54,10 @@ public class ProductoController {
         return restTemplate.getForObject("http://localhost:8086/api/v1/carritos/" + id, Carrito.class);
     }
 
-
+    @GetMapping("/pedido/{id}")
+    public Pedido obtenerPedido(@PathVariable long id){
+        return restTemplate.getForObject("http://localhost:8089/api/pedido/" + id, Pedido.class);
+    }
 
 
 
