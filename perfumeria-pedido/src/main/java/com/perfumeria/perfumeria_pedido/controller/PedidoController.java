@@ -19,7 +19,7 @@ public class PedidoController {
     public pedido guardar(@RequestBody pedido pedido) {
         return Repo.guardar(pedido);
     }
-    @GetMapping
+    @GetMapping("/{id}")
     public pedido buscar(@PathVariable long id) {
         return Repo.buscarPorId(id);
     }
