@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//hola..55
+//hola22
 @RestController
 @RequestMapping("/api/inventario")
 
