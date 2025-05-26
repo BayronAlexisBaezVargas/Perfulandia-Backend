@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 
 public class pedido {
-    //atributos
+    //atributos.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPedido;
