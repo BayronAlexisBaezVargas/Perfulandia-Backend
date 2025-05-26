@@ -3,6 +3,7 @@ package com.perfulandia.perfumeria_carrito.controller;
 import com.perfulandia.perfumeria_carrito.model.Carrito;
 import com.perfulandia.perfumeria_carrito.service.CarritoService;
 import java.util.List;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.client.RestTemplate;
@@ -35,5 +36,20 @@ public class CarritoController {
         service.eliminar(id);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Carrito> actualizar(@PathVariable long id, @RequestBody Carrito carrito){
+        try{
+            Carrito car = service.findById(Long.valueOf(id));
+            car.setId(id);
+            car.setCantidad_productos(carrito.getCantidad_productos());
+            car.setTotal(carrito.getTotal());
+            car.setUsuario(carrito.getUsuario());
+
+            service.save(car);
+            return ResponseEntity.ok(car);
+        }catch ( Exception e){
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

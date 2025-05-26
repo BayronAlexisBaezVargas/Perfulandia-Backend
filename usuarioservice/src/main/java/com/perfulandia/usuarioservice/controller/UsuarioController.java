@@ -25,7 +25,6 @@ public class UsuarioController {
     public Usuario guardar(@RequestBody Usuario usuario){
         return  service.guardar(usuario);
     }
-
     @GetMapping("/{id}")
     public Usuario buscar(@PathVariable long id){
         return service.buscar(id);

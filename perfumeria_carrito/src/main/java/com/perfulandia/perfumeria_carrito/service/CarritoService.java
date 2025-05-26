@@ -3,7 +3,6 @@ package com.perfulandia.perfumeria_carrito.service;
 import com.perfulandia.perfumeria_carrito.model.Carrito;
 import com.perfulandia.perfumeria_carrito.repository.CarritoRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -31,10 +30,11 @@ public class CarritoService {
         repo.deleteById(id);
     }
 
-
-
-
-
-
+    public Carrito findById(Long id) {
+        return repo.findById(id).orElse(null);
+    }
+    public Carrito save(Carrito carrito) {
+        return repo.save(carrito);
+    }
 
 }

@@ -28,4 +28,12 @@ public class PedidoService {
     public void eliminar(Long id) {
         pedidoRepo.deleteById(id);
     }
+
+    public pedido findById(Long id) {
+        return pedidoRepo.findById(id).orElse(null);
+    }
+
+    public pedido save(pedido pedido) {
+        return pedidoRepo.save(pedido);
+    }
 }
