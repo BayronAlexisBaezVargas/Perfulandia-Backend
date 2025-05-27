@@ -3,6 +3,7 @@ package com.Inventario.Microservicio_Inventario.service;
 import com.Inventario.Microservicio_Inventario.model.ProductoStock;
 import com.Inventario.Microservicio_Inventario.repository.ProductoStockRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -17,13 +18,13 @@ public class InventarioService {
         this.repository = repository;
     }
 
-    public Optional<ProductoStock> obtenerStock(Long id) {
-        return repository.findById(id);
+    public ProductoStock obtenerStock(Long id) {
+        return repository.findById(id).orElse(null);
     }
 
     public ProductoStock actualizarStock(Long id, String nombre, int stock) {
         ProductoStock productoStock = repository.findById(id)
-                .orElse(new ProductoStock(id, nombre, stock));
+                .orElse(new ProductoStock(id, stock, nombre));
         productoStock.setNombre(nombre);
         productoStock.setStock(stock);
         return repository.save(productoStock);
@@ -31,7 +32,7 @@ public class InventarioService {
 
     public ProductoStock aumentarStock(Long id, String nombre, int cantidad) {
         ProductoStock productoStock = repository.findById(id)
-                .orElse(new ProductoStock(id, nombre, cantidad));
+                .orElse(new ProductoStock(id, cantidad, nombre));
         productoStock.setNombre(nombre);
         productoStock.setStock(productoStock.getStock() + cantidad);
         return repository.save(productoStock);
@@ -62,5 +63,9 @@ public class InventarioService {
 
     public List<ProductoStock> obtenerTodos() {
         return repository.findAll();
+    }
+
+    public ProductoStock guardarProducto(ProductoStock productoStock){
+        return repository.save(productoStock);
     }
 }

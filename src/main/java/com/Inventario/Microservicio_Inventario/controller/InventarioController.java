@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//hola22
+
 @RestController
 @RequestMapping("/api/inventario")
 
@@ -23,13 +23,6 @@ public class InventarioController {
     @GetMapping
     public List<ProductoStock> listarInventario() {
         return service.obtenerTodos();
-    }
-
-    @GetMapping("/stock/{id}")
-    public ResponseEntity<?> obtenerStock(@PathVariable Long id) {
-        return service.obtenerStock(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/stock/{id}")
@@ -72,5 +65,15 @@ public class InventarioController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    //guardar producto
+    @PostMapping
+    public ProductoStock guardarProducto(@RequestBody ProductoStock productoStock){
+        return service.guardarProducto(productoStock);
+    }
+
+    @GetMapping("/{id}")
+    public ProductoStock obtenerProducto(@PathVariable Long id){
+        return service.obtenerStock(id);
     }
 }
