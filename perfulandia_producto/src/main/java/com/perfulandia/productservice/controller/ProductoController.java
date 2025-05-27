@@ -1,9 +1,7 @@
 package com.perfulandia.productservice.controller;
 
-import com.perfulandia.productservice.model.Pedido;
-import com.perfulandia.productservice.model.Producto;
-import com.perfulandia.productservice.model.Usuario;
-import com.perfulandia.productservice.model.Carrito;
+import com.perfulandia.productservice.model.*;
+import com.perfulandia.productservice.model.ProductoStock;
 import com.perfulandia.productservice.service.ProductoService;
 import java.util.List;
 import org.springframework.web.bind.annotation.*;
@@ -59,7 +57,10 @@ public class ProductoController {
         return restTemplate.getForObject("http://localhost:8089/api/pedido/" + id, Pedido.class);
     }
 
-
+    @GetMapping("/inventario/{id}")
+    public ProductoStock obtenerProductoStock(@PathVariable long id){
+        return restTemplate.getForObject("http://localhost:8087/api/inventario/" + id,ProductoStock.class);
+    }
 
 
 

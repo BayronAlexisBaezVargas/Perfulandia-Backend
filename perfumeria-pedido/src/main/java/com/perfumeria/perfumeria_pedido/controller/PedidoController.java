@@ -26,7 +26,7 @@ public class PedidoController {
     public pedido buscar(@PathVariable long id) {
         return Repo.buscarPorId(id);
     }
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void eliminar(@PathVariable long id) {
         Repo.eliminar(id);
     }
